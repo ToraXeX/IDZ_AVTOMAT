@@ -1,0 +1,326 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.map-container {
+    position: relative;
+    border: 2px solid #000;
+    width: 800px; 
+    height: 600px; 
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    transform-origin: center center; 
+}
+
+.computer-container {
+    text-align: center;
+    position: absolute;
+    cursor: grab;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.computer {
+    width: 50px; 
+    height: 50px;
+    background-size: cover;
+}
+
+.available {
+    background-image: url('free.jpg'); 
+}
+
+.occupied {
+    background-image: url('busy.jpg'); 
+}
+
+.computer-container p {
+    margin-top: 5px;
+    background-color: white;
+    padding: 2px 5px;
+    border-radius: 5px;
+}
+
+.controls {
+    position: absolute;
+    bottom: 20px;
+    display: flex;
+    gap: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.controls button, .controls select {
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Стили для кнопок */
+button {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-right: 5px;
+}
+
+button:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Легкая тень при наведении */
+}
+
+button:active {
+    transform: translateY(2px); /* Эффект нажатия */
+}
+
+/* Основные кнопки - синий цвет */
+button.primary {
+    background-color: #007bff;
+    color: white;
+}
+
+button.primary:hover {
+    background-color: #0056b3; /* Темнее при наведении */
+}
+
+/* Кнопки для опасных действий - красный цвет */
+button.danger {
+    background-color: #dc3545;
+    color: white;
+}
+
+button.danger:hover {
+    background-color: #c82333;
+}
+
+/* Нейтральные кнопки - серый цвет */
+button.neutral {
+    background-color: #6e7d6c;
+    color: white;
+}
+
+button.neutral:hover {
+    background-color: #5a6268;
+}
+
+/* Кнопка для очистки карты - желтый цвет */
+button.clear {
+    background-color: #ffc107;
+    color: white;
+}
+
+button.clear:hover {
+    background-color: #e0a800;
+}
+
+/* Кнопка "Загрузить карту" */
+.label-file {
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.label-file:hover {
+    background-color: #0056b3;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+input[type="file"] {
+    display: none;
+}
+
+/* Стили для модального окна */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    text-align: center;
+    background-color: white; /* Белый фон для светлой темы */
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1000;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.modal-content h3 {
+    margin: 10px 0;
+}
+
+#productOptions label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#servicePackage {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+#confirmPackage, .modal-content button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+}
+
+/* Кнопка подтверждения пакета (основная) */
+#confirmPackage {
+    background-color: #28a745;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#confirmPackage:hover {
+    background-color: #218838;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.modal-content button {
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+    padding: 12px 24px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal-content button:hover {
+    background-color: #e0e0e0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Итоговая цена */
+#totalPrice {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333; /* Чёрный цвет для светлой темы */
+    margin-top: 10px;
+}
+
+/* Темная тема */
+body.dark {
+    background-color: #121212;
+    color: white; /* Цвет текста для темной темы */
+}
+
+.modal-content.dark {
+    background-color: #1e1e1e; /* Цвет фона модального окна в темной теме */
+}
+
+#totalPrice.dark {
+    color: #fff; /* Белый цвет для итоговой цены в темной теме */
+}
+
+/* Стили для кнопки отмены в модальном окне */
+.modal-content button.neutral {
+    background-color: #6e7d6c; /* Цвет для кнопки отмены */
+    color: white;
+}
+
+.modal-content button.neutral:hover {
+    background-color: #5a6268; /* Цвет при наведении */
+}
+/* Стили для переключателя темы */
+.theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-right: 10px; /* Отступ между переключателем и текстом */
+}
+
+.switch input {
+    opacity: 0; /* Скрыть стандартный элемент checkbox */
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px; /* Края переключателя */
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    border-radius: 50%; /* Круглый элемент переключателя */
+    transition: .4s;
+}
+
+/* Переключение состояния */
+input:checked + .slider {
+    background-color: #2196F3; /* Цвет переключателя в включенном состоянии */
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px); /* Перемещение элемента переключателя */
+}
+
+/* Для круга переключателя */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}

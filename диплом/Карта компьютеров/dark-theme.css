@@ -1,0 +1,77 @@
+/* Темная тема */
+body.dark-theme {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+.map-container.dark-theme {
+    border-color: #444;
+}
+
+.controls.dark-theme {
+    background-color: rgba(50, 50, 50, 0.8);
+}
+
+.computer-container p {
+    margin-top: 5px;
+    background-color: #333; /* Темный фон для названий компьютеров */
+    color: #e0e0e0; /* Светлый текст для видимости */
+    padding: 2px 5px;
+    border-radius: 5px;
+}
+
+.modal-content.dark-theme {
+    background-color: #333;
+    color: #e0e0e0;
+}
+
+/* Темные кнопки */
+button.primary.dark-theme {
+    background-color: #0056b3; /* Тёмно-синий цвет для кнопки */
+}
+
+button.danger.dark-theme {
+    background-color: #c82333; /* Темно-красный цвет для кнопки */
+}
+
+button.neutral.dark-theme {
+    background-color: #5a6268; /* Темно-серый цвет для кнопки */
+}
+
+button.clear.dark-theme {
+    background-color: #e0a800; /* Темно-желтый цвет для кнопки */
+}
+
+/* Темные кнопки в модальном окне */
+.modal-content button.dark-theme {
+    background-color: #444;
+    color: #e0e0e0; /* Светлый текст для кнопок */
+}
+
+.modal-content button.dark-theme:hover {
+    background-color: #555;
+}
+
+#confirmPackage.dark-theme {
+    background-color: #218838; /* Зеленый цвет для кнопки подтверждения */
+}
+
+#confirmPackage.dark-theme:hover {
+    background-color: #1e7e34; /* Темно-зеленый при наведении */
+}
+
+body.dark-theme button.cancel {
+    background-color: #6c757d; /* Серый цвет для кнопки отмены */
+}
+
+body.dark-theme button.cancel:hover {
+    background-color: #495057; /* Темнее при наведении в темной теме */
+}
+
+/* Итоговая цена */
+#totalPrice {
+    font-size: 18px;
+    font-weight: bold;
+    color: #03178aa8; /* Возвращаем черный цвет для светлой темы */
+    margin-top: 10px;
+}

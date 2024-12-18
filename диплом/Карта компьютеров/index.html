@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Карта компьютеров</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Светлая тема -->
+    <link rel="stylesheet" href="dark-theme.css"> <!-- Темная тема -->
+</head>
+<body>
+
+<!-- Ползунок для переключения темы -->
+<div class="theme-toggle">
+    <label class="switch">
+        <input type="checkbox" id="themeSwitcher" onclick="toggleTheme()">
+        <span class="slider round"></span>
+    </label>
+    <span>Темная тема</span>
+</div>
+
+<div class="container">
+    <div class="map-container" id="mapContainer">
+        <!-- Изначально пустая область для карты -->
+    </div>
+</div>
+
+<div class="controls" id="controls">
+    <select id="computerSelect" class="neutral">
+        <option value="" disabled selected>Выберите компьютер для удаления</option>
+    </select>
+    <button class="danger" onclick="removeSelectedComputer()">Удалить выбранный компьютер</button>
+    <button class="clear" onclick="clearAll()">Очистить поле</button>
+    <button class="neutral" onclick="addComputer()">Добавить компьютер</button>
+    <label for="file-upload" class="label-file primary">Загрузить карту</label>
+    <input id="file-upload" type="file" accept="image/*" onchange="loadMap(event)" style="display: none;">
+    <button class="clear" onclick="clearMap()">Очистить карту</button>
+    <button class="primary" onclick="zoomIn()">Увеличить карту</button>
+    <button class="primary" onclick="zoomOut()">Уменьшить карту</button>
+</div>
+
+<!-- Модальное окно для выбора пакета услуг и товаров -->
+<div id="packageModal" class="modal">
+    <div class="modal-content" id="modalContent">
+        <h3>Выберите пакет услуг</h3>
+        <select id="servicePackage" onchange="updateTotalPrice()">
+            <!-- Пакеты услуг будут добавлены динамически -->
+        </select>
+
+        <h3>Выберите товары</h3>
+        <div id="productOptions">
+            <!-- Список товаров с чекбоксами -->
+        </div>
+
+        <h3>Итоговая цена: <span id="totalPrice">0</span> ₽</h3>
+
+        <button id="confirmPackage" class="primary">Подтвердить</button>
+        <button class="neutral" onclick="closePackageModal()">Отмена</button>
+    </div>
+</div>
+
+<div class="theme-toggle">
+    <label class="switch">
+        <input type="checkbox" id="themeSwitcher" onclick="toggleTheme()">
+        <span class="slider round"></span>
+    </label>
+    <span>Темная тема</span>
+</div>
+
+<script src="scripts.js"></script> <!-- Путь к JS файлу -->
+</body>
+</html>
